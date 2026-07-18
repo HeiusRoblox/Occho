@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel – Dimental Key System</title>
+  <link rel="stylesheet" href="/api/admin.css" />
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen" class="screen">
+  <div class="login-box">
+    <h1>🔐 Admin Panel</h1>
+    <p class="subtitle">Dimental Key Management System</p>
+    <div class="error-msg hidden" id="login-err"></div>
+    <div class="field">
+      <label>Mật Khẩu Admin</label>
+      <input type="password" id="pw-input" placeholder="Nhập mật khẩu..." onkeydown="if(event.key==='Enter') doLogin()" />
+    </div>
+    <button class="btn btn-primary full" onclick="doLogin()">ĐĂNG NHẬP</button>
+  </div>
+</div>
+
+<!-- ADMIN SCREEN -->
+<div id="admin-screen" class="screen hidden">
+  <header>
+    <h1>⚡ Dimental Key Manager</h1>
+    <div class="header-right">
+      <button class="btn btn-ghost btn-sm" onclick="loadKeys()">🔄 Refresh</button>
+      <button class="btn btn-primary btn-sm" onclick="openCreateModal()">＋ Tạo Key</button>
+      <button class="btn btn-ghost btn-sm" onclick="doLogout()">Đăng xuất</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="alert-box" class="hidden"></div>
+
+    <div class="stats-row" id="stats-row"></div>
+
+    <div class="toolbar">
+      <h2 id="key-count-lbl">Tất cả key</h2>
+    </div>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Tên</th>
+            <th>Loại</th>
+            <th>Hết Hạn</th>
+            <th>Device</th>
+            <th>Thao Tác</th>
+          </tr>
+        </thead>
+        <tbody id="keys-tbody">
+          <tr><td colspan="6" class="empty">Đang tải...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<!-- MODAL -->
+<div id="modal-overlay" class="modal-overlay hidden">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modal-title">Modal</h2>
+      <button class="btn-icon" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Hủy</button>
+      <button class="btn btn-primary" id="modal-confirm-btn">Xác Nhận</button>
+    </div>
+  </div>
+</div>
+
+<script src="/api/admin.js"></script>
+</body>
+</html>
