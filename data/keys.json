@@ -1,0 +1,10 @@
+[
+  {
+    "key": "DEMO-KEY-2026",
+    "keyName": "Demo Key",
+    "typeKey": "7 Ngày",
+    "expire": "2026-12-31",
+    "maxDeviceIds": 3,
+    "deviceIds": []
+  }
+]
